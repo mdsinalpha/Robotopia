@@ -9,7 +9,7 @@ interface Device {
 
 }
 
-open class Head(override val id: Int, final override val model: Device.Model) : Device {
+class Head(override val id: Int, override val model: Device.Model) : Device {
     override var damaged = false
 
     init {
@@ -19,7 +19,7 @@ open class Head(override val id: Int, final override val model: Device.Model) : 
     enum class Model : Device.Model
 }
 
-open class Body(override val id: Int, final override val model: Device.Model) : Device {
+class Body(override val id: Int, override val model: Device.Model) : Device {
     override var damaged = false
 
     init {
@@ -29,7 +29,7 @@ open class Body(override val id: Int, final override val model: Device.Model) : 
     enum class Model : Device.Model
 }
 
-open class Hand(override val id: Int, final override val model: Device.Model) : Device {
+class Hand(override val id: Int, override val model: Device.Model) : Device {
     override var damaged = false
 
     init {
@@ -39,7 +39,7 @@ open class Hand(override val id: Int, final override val model: Device.Model) : 
     enum class Model : Device.Model
 }
 
-open class Eye(override val id: Int, final override val model: Device.Model) : Device {
+class Eye(override val id: Int, override val model: Device.Model) : Device {
     override var damaged = false
 
     init {
@@ -51,7 +51,7 @@ open class Eye(override val id: Int, final override val model: Device.Model) : D
     }
 }
 
-open class Ear(override val id: Int, final override val model: Device.Model) : Device {
+class Ear(override val id: Int, override val model: Device.Model) : Device {
     override var damaged = false
 
     init {
@@ -61,7 +61,7 @@ open class Ear(override val id: Int, final override val model: Device.Model) : D
     enum class Model : Device.Model
 }
 
-open class Foot(override val id: Int, final override val model: Device.Model) : Device {
+class Foot(override val id: Int, override val model: Device.Model) : Device {
     override var damaged = false
 
     init {
@@ -71,7 +71,7 @@ open class Foot(override val id: Int, final override val model: Device.Model) : 
     enum class Model : Device.Model
 }
 
-open class Nose(override val id: Int, final override val model: Device.Model) : Device {
+class Nose(override val id: Int, override val model: Device.Model) : Device {
     override var damaged = false
 
     init {

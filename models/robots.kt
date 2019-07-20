@@ -1,8 +1,6 @@
 package robotopia.models
 
-import java.lang.IllegalArgumentException
-
-sealed class Robot : Device {
+sealed class Robot: Device{
 
     abstract val body: Structure
 
