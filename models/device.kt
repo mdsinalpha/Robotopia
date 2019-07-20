@@ -33,17 +33,6 @@ class Body(override val id: Int, override val model: Device.Model) : Device {
     }
 }
 
-class Arm(override val id: Int, override val model: Device.Model) : Device {
-    override var damaged = false
-
-    init {
-        model.takeIf { it is Model } ?: throw IllegalArgumentException("model is not an Arm model!")
-    }
-
-    enum class Model : Device.Model {
-        Simple, Paw, Feather, Sword, Gun, RPG, Saw, Tablet, Versatile
-    }
-}
 
 class Eye(override val id: Int, override val model: Device.Model) : Device {
     override var damaged = false
@@ -78,5 +67,17 @@ class Leg(override val id: Int, override val model: Device.Model) : Device {
 
     enum class Model : Device.Model {
         Simple, Elemental, Climber
+    }
+}
+
+class Arm(override val id: Int, override val model: Device.Model) : Device {
+    override var damaged = false
+
+    init {
+        model.takeIf { it is Model } ?: throw IllegalArgumentException("model is not an Arm model!")
+    }
+
+    enum class Model : Device.Model {
+        Simple, Paw, Feather, Sword, Gun, RPG, Saw, Tablet, Versatile
     }
 }

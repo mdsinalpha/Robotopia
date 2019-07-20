@@ -20,7 +20,6 @@ open class ServantRobot(final override val id: Int, final override val body: Str
                 throw IllegalArgumentException("$body is not compatible with a ServantRobot.")
         }
     }
-
 }
 
 open class RescuerRobot(final override val id: Int, final override val body: Structure) : Robot() {

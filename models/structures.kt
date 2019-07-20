@@ -1,8 +1,22 @@
 package robotopia.models
 
-sealed class Structure
+sealed class Structure{
 
-open class HumanStructure: Structure()
+    abstract val cost: Long
+}
+
+open class HumanStructure(val head: Head, val body: Body,
+                          val eye: Eye, val assistant: VoiceAssistant,
+                          val leftArm: Arm, val rightArm: Arm,
+                          val leg: Leg): Structure(){
+    init {
+        head.takeIf { it.model in listOf(Head.Model.Skeletonic, Head.Model.Elemental) }
+            ?: throw IllegalArgumentException("$head is not compatible with a HumanStructure.")
+    }
+
+    override val cost: Long
+        get() = 1
+}
 
 open class CatStructure: Structure()
 
