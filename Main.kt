@@ -5,5 +5,5 @@ fun main() {
     println("Mohsen is printing ${2 * 3}.")
     println("Hello!")
     println("Mohsen is printing ${2 * 3}")
-    println("First conflict!")
+    println("no conflict!")
 }
