@@ -13,70 +13,70 @@ class Head(override val id: Int, override val model: Device.Model) : Device {
     override var damaged = false
 
     init {
-        model.takeIf { it is Model } ?: throw IllegalArgumentException("model is not a head model!")
+        model.takeIf { it is Model } ?: throw IllegalArgumentException("model is not a Head model!")
     }
 
-    enum class Model : Device.Model
+    enum class Model : Device.Model {
+        Elemental, Skeletonic, Metallic, Fiery
+    }
 }
 
 class Body(override val id: Int, override val model: Device.Model) : Device {
     override var damaged = false
 
     init {
-        model.takeIf { it is Model } ?: throw IllegalArgumentException("model is not a body model!")
+        model.takeIf { it is Model } ?: throw IllegalArgumentException("model is not a Body model!")
     }
 
-    enum class Model : Device.Model
+    enum class Model : Device.Model {
+        Elemental, Skeletonic, Metallic, Aluminium
+    }
 }
 
-class Hand(override val id: Int, override val model: Device.Model) : Device {
+class Arm(override val id: Int, override val model: Device.Model) : Device {
     override var damaged = false
 
     init {
-        model.takeIf { it is Model } ?: throw IllegalArgumentException("model is not a hand model!")
+        model.takeIf { it is Model } ?: throw IllegalArgumentException("model is not an Arm model!")
     }
 
-    enum class Model : Device.Model
+    enum class Model : Device.Model {
+        Simple, Paw, Feather, Sword, Gun, RPG, Saw, Tablet, Versatile
+    }
 }
 
 class Eye(override val id: Int, override val model: Device.Model) : Device {
     override var damaged = false
 
     init {
-        model.takeIf { it is Model } ?: throw IllegalArgumentException("model is not an eye model!")
+        model.takeIf { it is Model } ?: throw IllegalArgumentException("model is not an Eye model!")
     }
 
     enum class Model : Device.Model {
-        Elemental,
+        Simple, Elemental, Laseric, Camera
     }
 }
 
-class Ear(override val id: Int, override val model: Device.Model) : Device {
+class VoiceAssistant(override val id: Int, override val model: Device.Model) : Device {
     override var damaged = false
 
     init {
-        model.takeIf { it is Model } ?: throw IllegalArgumentException("model is not a ear model!")
+        model.takeIf { it is Model } ?: throw IllegalArgumentException("model is not a VoiceAssistant model!")
     }
 
-    enum class Model : Device.Model
+    enum class Model : Device.Model {
+        Siri, Google, Cortana
+    }
 }
 
-class Foot(override val id: Int, override val model: Device.Model) : Device {
+class Leg(override val id: Int, override val model: Device.Model) : Device {
     override var damaged = false
 
     init {
-        model.takeIf { it is Model } ?: throw IllegalArgumentException("model is not a foot model!")
+        model.takeIf { it is Model } ?: throw IllegalArgumentException("model is not a Leg model!")
     }
 
-    enum class Model : Device.Model
-}
-
-class Nose(override val id: Int, override val model: Device.Model) : Device {
-    override var damaged = false
-
-    init {
-        model.takeIf { it is Model } ?: throw IllegalArgumentException("model is not a nose model!")
+    enum class Model : Device.Model {
+        Simple, Elemental, Climber
     }
-
-    enum class Model : Device.Model
 }
