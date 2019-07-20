@@ -29,6 +29,8 @@ class Head(override val id: Int, override val model: Device.Model) : Device {
             override val cost: Long = 48
         };
     }
+
+    override fun toString() = "Head(id=$id, model=$model)"
 }
 
 class Body(override val id: Int, override val model: Device.Model) : Device {
@@ -49,6 +51,8 @@ class Body(override val id: Int, override val model: Device.Model) : Device {
             override val cost: Long = 60
         }
     }
+
+    override fun toString() = "Body(id=$id, model=$model)"
 }
 
 
@@ -70,6 +74,8 @@ class Eye(override val id: Int, override val model: Device.Model) : Device {
             override val cost: Long = 72
         }
     }
+
+    override fun toString() = "Eye(id=$id, model=$model)"
 }
 
 class VoiceAssistant(override val id: Int, override val model: Device.Model) : Device {
@@ -88,6 +94,8 @@ class VoiceAssistant(override val id: Int, override val model: Device.Model) : D
             override val cost: Long = 80
         }
     }
+
+    override fun toString() = "VoiceAssistant(id=$id, model=$model)"
 }
 
 class Leg(override val id: Int, override val model: Device.Model) : Device {
@@ -106,6 +114,8 @@ class Leg(override val id: Int, override val model: Device.Model) : Device {
             override val cost: Long = 100
         }
     }
+
+    override fun toString() = "Leg(id=$id, model=$model)"
 }
 
 class Arm(override val id: Int, override val model: Device.Model) : Device {
@@ -136,4 +146,6 @@ class Arm(override val id: Int, override val model: Device.Model) : Device {
             override val cost: Long = 246
         }
     }
+
+    override fun toString() = "Arm(id=$id, model=$model)"
 }

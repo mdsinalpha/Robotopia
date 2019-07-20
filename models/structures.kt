@@ -1,14 +1,35 @@
 package robotopia.models
 
-sealed class Structure{
+sealed class Structure: Device{
+
+    enum class Model: Device.Model{
+        HumanStructure{
+            override val cost: Long = 100
+        }, CatStructure{
+            override val cost: Long = 150
+        }, DogStructure{
+            override val cost: Long = 200
+        }, SquirrelStructure{
+            override val cost: Long = 150
+        }, BirdStructure{
+            override val cost: Long = 250
+        }, BearStructure{
+            override val cost: Long = 350
+        }
+    }
 
     abstract val cost: Long
 }
 
-open class HumanStructure(val head: Head, val body: Body,
+open class HumanStructure(override val id:Int,
+                          val head: Head, val body: Body,
                           val eye: Eye, val assistant: VoiceAssistant,
                           val leftArm: Arm, val rightArm: Arm,
                           val leg: Leg): Structure(){
+
+    override val model = Model.HumanStructure
+    override var damaged = false
+
     init {
         head.takeIf { it.model in listOf(Head.Model.Skeletonic, Head.Model.Elemental) }
             ?: throw IllegalArgumentException("$head is not compatible with a HumanStructure.")
@@ -26,6 +47,8 @@ open class HumanStructure(val head: Head, val body: Body,
         get() = head.model.cost + body.model.cost + 2 * eye.model.cost +
                 assistant.model.cost + leftArm.model.cost + rightArm.model.cost +
                 2 * leg.model.cost
+
+    override fun toString() = "HumanStructure(id=$id, cost=$cost)"
 }
 
 open class CatStructure: Structure()

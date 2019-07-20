@@ -2,75 +2,97 @@ package robotopia.models
 
 sealed class Robot: Device{
 
-    abstract val body: Structure
+    abstract val structure: Structure
 
     enum class Model: Device.Model{
-        ServantRobot, RescuerRobot, CompetitorRobot, PetRobot, TerminatorRobot
+        ServantRobot{
+            override val cost: Long = 1000
+        }, RescuerRobot{
+            override val cost: Long = 1700
+        }, CompetitorRobot{
+            override val cost: Long = 1800
+        }, PetRobot{
+            override val cost: Long = 2200
+        }, TerminatorRobot{
+            override val cost: Long = 5000
+        }
     }
 }
 
-open class ServantRobot(final override val id: Int, final override val body: Structure) : Robot() {
+open class ServantRobot(final override val id: Int, final override val structure: Structure) : Robot() {
 
     override val model = Model.ServantRobot
     override var damaged = false
 
     init {
-        when (body) {
+        when (structure) {
             is DogStructure, is BirdStructure, is BearStructure ->
-                throw IllegalArgumentException("$body is not compatible with a ServantRobot.")
+                throw IllegalArgumentException("$structure is not compatible with a ServantRobot.")
         }
     }
+
+    override fun toString() = "ServantRobot(id=$id, model=$model)"
 }
 
-open class RescuerRobot(final override val id: Int, final override val body: Structure) : Robot() {
+open class RescuerRobot(final override val id: Int, final override val structure: Structure) : Robot() {
 
     override val model = Model.RescuerRobot
     override var damaged = false
 
     init {
-        when (body) {
+        when (structure) {
             is CatStructure, is SquirrelStructure ->
-                throw IllegalArgumentException("$body is not compatible with a RescuerRobot.")
+                throw IllegalArgumentException("$structure is not compatible with a RescuerRobot.")
         }
     }
+
+    override fun toString() = "RescuerRobot(id=$id, model=$model)"
+
 }
 
-open class CompetitorRobot(final override val id: Int, final override val body: Structure) : Robot() {
+open class CompetitorRobot(final override val id: Int, final override val structure: Structure) : Robot() {
 
     override val model = Model.CompetitorRobot
     override var damaged = false
 
     init {
-        when (body) {
+        when (structure) {
             is HumanStructure ->
-                throw IllegalArgumentException("$body is not compatible with a CompetitorRobot.")
+                throw IllegalArgumentException("$structure is not compatible with a CompetitorRobot.")
         }
     }
+
+    override fun toString() = "CompetitorRobot(id=$id, model=$model)"
+
 }
 
-open class PetRobot(final override val id: Int, final override val body: Structure) : Robot() {
+open class PetRobot(final override val id: Int, final override val structure: Structure) : Robot() {
 
     override val model = Model.PetRobot
     override var damaged = false
 
     init {
-        when (body) {
+        when (structure) {
             is HumanStructure, is BearStructure ->
-                throw IllegalArgumentException("$body is not compatible with a PetRobot.")
+                throw IllegalArgumentException("$structure is not compatible with a PetRobot.")
         }
     }
+
+    override fun toString() = "PetRobot(id=$id, model=$model)"
 }
 
-open class TerminatorRobot(final override val id: Int, final override val body: Structure) : Robot() {
+open class TerminatorRobot(final override val id: Int, final override val structure: Structure) : Robot() {
 
     override val model = Model.TerminatorRobot
     override var damaged = false
 
     init {
-        when (body) {
+        when (structure) {
             !is BearStructure ->
-                throw IllegalArgumentException("$body is not compatible with a PetRobot.")
+                throw IllegalArgumentException("$structure is not compatible with a PetRobot.")
         }
     }
+    override fun toString() = "TerminatorRobot(id=$id, model=$model)"
+
 }
 
