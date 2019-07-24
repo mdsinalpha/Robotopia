@@ -102,8 +102,8 @@ open class DogStructure(override val id: Int,
     override fun toString(): String = "DogStructure(id=$id, totalCost=$totalCost)"
 }
 
-open class SquirrelStructure: Structure()
+abstract class SquirrelStructure: Structure()
 
-open class BirdStructure: Structure()
+abstract class BirdStructure: Structure()
 
-open class BearStructure: Structure()
+abstract class BearStructure: Structure()

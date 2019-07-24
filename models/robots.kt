@@ -4,6 +4,14 @@ sealed class Robot: Device{
 
     abstract val structure: Structure
 
+    val finalCost: Long
+        get() = structure.totalCost + model.cost
+
+    override var damaged = false
+        set(value) {
+            field = !field
+        }
+
     enum class Model: Device.Model{
         ServantRobot{
             override val cost: Long = 1000
@@ -22,7 +30,6 @@ sealed class Robot: Device{
 open class ServantRobot(final override val id: Int, final override val structure: Structure) : Robot() {
 
     override val model = Model.ServantRobot
-    override var damaged = false
 
     init {
         when (structure) {
@@ -37,7 +44,6 @@ open class ServantRobot(final override val id: Int, final override val structure
 open class RescuerRobot(final override val id: Int, final override val structure: Structure) : Robot() {
 
     override val model = Model.RescuerRobot
-    override var damaged = false
 
     init {
         when (structure) {
@@ -53,7 +59,6 @@ open class RescuerRobot(final override val id: Int, final override val structure
 open class CompetitorRobot(final override val id: Int, final override val structure: Structure) : Robot() {
 
     override val model = Model.CompetitorRobot
-    override var damaged = false
 
     init {
         when (structure) {
@@ -69,7 +74,6 @@ open class CompetitorRobot(final override val id: Int, final override val struct
 open class PetRobot(final override val id: Int, final override val structure: Structure) : Robot() {
 
     override val model = Model.PetRobot
-    override var damaged = false
 
     init {
         when (structure) {
@@ -84,7 +88,6 @@ open class PetRobot(final override val id: Int, final override val structure: St
 open class TerminatorRobot(final override val id: Int, final override val structure: Structure) : Robot() {
 
     override val model = Model.TerminatorRobot
-    override var damaged = false
 
     init {
         when (structure) {
