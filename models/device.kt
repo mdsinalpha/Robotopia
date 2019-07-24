@@ -11,44 +11,36 @@ interface Device {
 
 }
 
-class Head(override val id: Int, override val model: Device.Model) : Device {
+class Head(override val id: Int, override val model: Model) : Device {
     override var damaged = false
-
-    init {
-        model.takeIf { it is Model } ?: throw IllegalArgumentException("model is not a Head model!")
-    }
 
     enum class Model : Device.Model {
         Elemental{
-            override val cost: Long = 12
+            override val cost = 12L
         }, Skeletonic{
-            override val cost: Long = 5
+            override val cost = 5L
         }, Metallic{
-            override val cost: Long = 25
+            override val cost = 25L
         }, Fiery{
-            override val cost: Long = 48
+            override val cost = 48L
         };
     }
 
     override fun toString() = "Head(id=$id, model=$model)"
 }
 
-class Body(override val id: Int, override val model: Device.Model) : Device {
+class Body(override val id: Int, override val model: Model) : Device {
     override var damaged = false
-
-    init {
-        model.takeIf { it is Model } ?: throw IllegalArgumentException("model is not a Body model!")
-    }
 
     enum class Model : Device.Model {
         Elemental{
-            override val cost: Long = 36
+            override val cost = 36L
         }, Skeletonic{
-            override val cost: Long = 15
+            override val cost = 15L
         }, Metallic{
-            override val cost: Long = 75
+            override val cost = 75L
         }, Aluminium{
-            override val cost: Long = 60
+            override val cost = 60L
         }
     }
 
@@ -56,94 +48,78 @@ class Body(override val id: Int, override val model: Device.Model) : Device {
 }
 
 
-class Eye(override val id: Int, override val model: Device.Model) : Device {
+class Eye(override val id: Int, override val model: Model) : Device {
     override var damaged = false
-
-    init {
-        model.takeIf { it is Model } ?: throw IllegalArgumentException("model is not an Eye model!")
-    }
 
     enum class Model : Device.Model {
         Simple{
-            override val cost: Long = 20
+            override val cost = 20L
         }, Elemental{
-            override val cost: Long = 37
+            override val cost = 37L
         }, Laseric{
-            override val cost: Long = 100
+            override val cost = 100L
         }, Camera{
-            override val cost: Long = 72
+            override val cost = 72L
         }
     }
 
     override fun toString() = "Eye(id=$id, model=$model)"
 }
 
-class VoiceAssistant(override val id: Int, override val model: Device.Model) : Device {
+class VoiceAssistant(override val id: Int, override val model: Model) : Device {
     override var damaged = false
-
-    init {
-        model.takeIf { it is Model } ?: throw IllegalArgumentException("model is not a VoiceAssistant model!")
-    }
 
     enum class Model : Device.Model {
         Siri{
-            override val cost: Long = 95
+            override val cost = 95L
         }, Google{
-            override val cost: Long = 85
+            override val cost = 85L
         }, Cortana{
-            override val cost: Long = 80
+            override val cost = 80L
         }
     }
 
     override fun toString() = "VoiceAssistant(id=$id, model=$model)"
 }
 
-class Leg(override val id: Int, override val model: Device.Model) : Device {
+class Leg(override val id: Int, override val model: Model) : Device {
     override var damaged = false
-
-    init {
-        model.takeIf { it is Model } ?: throw IllegalArgumentException("model is not a Leg model!")
-    }
 
     enum class Model : Device.Model {
         Simple{
-            override val cost: Long = 50
+            override val cost = 50L
         }, Elemental{
-            override val cost: Long = 65
+            override val cost = 65L
         }, Climber{
-            override val cost: Long = 100
+            override val cost = 100L
         }
     }
 
     override fun toString() = "Leg(id=$id, model=$model)"
 }
 
-class Arm(override val id: Int, override val model: Device.Model) : Device {
+class Arm(override val id: Int, override val model: Model) : Device {
     override var damaged = false
-
-    init {
-        model.takeIf { it is Model } ?: throw IllegalArgumentException("model is not an Arm model!")
-    }
 
     enum class Model : Device.Model {
         Simple{
-            override val cost: Long = 30
+            override val cost = 30L
         }, Paw{
-            override val cost: Long = 44
+            override val cost = 44L
         }, Feather{
-            override val cost: Long = 66
+            override val cost = 66L
         }, Sword{
-            override val cost: Long = 80
+            override val cost = 80L
         }, Gun{
-            override val cost: Long = 99
+            override val cost = 99L
         }, RPG{
-            override val cost: Long = 150
+            override val cost = 150L
         }, Saw{
-            override val cost: Long = 85
+            override val cost = 85L
         }, Tablet{
-            override val cost: Long = 20
+            override val cost = 20L
         }, Versatile{
-            override val cost: Long = 246
+            override val cost = 246L
         }
     }
 
