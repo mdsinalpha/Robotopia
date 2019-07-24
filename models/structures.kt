@@ -32,9 +32,12 @@ sealed class Structure : Device {
 
 open class HumanStructure(
     override val id: Int,
-    val head: Head, val body: Body,
-    val eye: Eye, val assistant: VoiceAssistant,
-    val leftArm: Arm, val rightArm: Arm,
+    val head: Head,
+    val body: Body,
+    val eye: Eye,
+    val assistant: VoiceAssistant,
+    val leftArm: Arm,
+    val rightArm: Arm,
     val leg: Leg
 ) : Structure() {
 
@@ -66,53 +69,67 @@ open class HumanStructure(
     override fun toString() = "HumanStructure(id=$id, totalCost=$totalCost)"
 }
 
-open class CatStructure(override val id: Int,
-                        val head: Head, val body: Body,
-                        val eye: Eye, val assistant: VoiceAssistant,
-                        val leg: Leg): Structure(){
+open class CatStructure(
+    override val id: Int,
+    val head: Head, val body: Body,
+    val eye: Eye, val assistant: VoiceAssistant,
+    val leg: Leg
+) : Structure() {
 
-    override val model = Model.CatStructure
+    final override val model = Model.CatStructure
     override var damaged = false
 
     init {
         head.takeUnless { it.model in listOf(Head.Model.Metallic, Head.Model.Fiery) }
-            ?: throw IllegalArgumentException("$head is not compatible with a $model.")
+            ?: model isNotCompatibleWith head
         body.takeUnless { it.model == Body.Model.Metallic }
-            ?: throw IllegalArgumentException("$body is not compatible with a $model.")
+            ?: model isNotCompatibleWith body
         eye.takeUnless { it.model == Eye.Model.Elemental }
-            ?: throw IllegalArgumentException("$eye is not compatible with a $model.")
+            ?: model isNotCompatibleWith eye
         leg.takeUnless { it.model == Leg.Model.Elemental }
-            ?: throw IllegalArgumentException("$leg is not compatible with a $model.")
+            ?: model isNotCompatibleWith leg
 
     }
 
     override val totalCost: Long
-        get() = head.model.cost + body.model.cost + 2 * eye.model.cost +
-                assistant.model.cost +4 * leg.model.cost + model.cost
+        get() = head.model.cost +
+                body.model.cost +
+                eye.model.cost * 2 +
+                assistant.model.cost +
+                leg.model.cost * 4 +
+                model.cost
 
     override fun toString(): String = "CatStructure(id=$id, totalCost=$totalCost)"
 }
 
-open class DogStructure(override val id: Int,
-                        val head: Head, val body: Body,
-                        val eye: Eye, val assistant: VoiceAssistant,
-                        val leg: Leg): Structure(){
+open class DogStructure(
+    override val id: Int,
+    val head: Head,
+    val body: Body,
+    val eye: Eye,
+    val assistant: VoiceAssistant,
+    val leg: Leg
+) : Structure() {
 
-    override val model = Model.DogStructure
+    final override val model = Model.DogStructure
     override var damaged = false
 
     init {
         head.takeUnless { it.model in listOf(Head.Model.Fiery) }
-            ?: throw IllegalArgumentException("$head is not compatible with a $model.")
+            ?: model isNotCompatibleWith head
         eye.takeUnless { it.model == Eye.Model.Laseric }
-            ?: throw IllegalArgumentException("$eye is not compatible with a $model.")
+            ?: model isNotCompatibleWith eye
         leg.takeUnless { it.model == Leg.Model.Simple }
-            ?: throw IllegalArgumentException("$leg is not compatible with a $model.")
+            ?: model isNotCompatibleWith leg
     }
 
     override val totalCost: Long
-        get() = head.model.cost + body.model.cost + 2 * eye.model.cost +
-                assistant.model.cost + 4 * leg.model.cost + model.cost
+        get() = head.model.cost +
+                body.model.cost +
+                eye.model.cost * 2 +
+                assistant.model.cost +
+                leg.model.cost * 4 +
+                model.cost
 
     override fun toString(): String = "DogStructure(id=$id, totalCost=$totalCost)"
 }
