@@ -3,6 +3,7 @@ package robotopia.models
 sealed class Robot: Device{
 
     abstract val structure: Structure
+    abstract val owner: User
 
     val finalCost: Long
         get() = structure.totalCost + model.cost
@@ -27,7 +28,7 @@ sealed class Robot: Device{
     }
 }
 
-open class ServantRobot(final override val id: Int, final override val structure: Structure) : Robot() {
+data class ServantRobot(override val id: Int, override val structure: Structure, override val owner: User) : Robot() {
 
     override val model = Model.ServantRobot
 
@@ -41,7 +42,7 @@ open class ServantRobot(final override val id: Int, final override val structure
     override fun toString() = "ServantRobot(id=$id, model=$model)"
 }
 
-open class RescuerRobot(final override val id: Int, final override val structure: Structure) : Robot() {
+data class RescuerRobot(final override val id: Int, final override val structure: Structure, override val owner: User) : Robot() {
 
     override val model = Model.RescuerRobot
 
@@ -56,7 +57,7 @@ open class RescuerRobot(final override val id: Int, final override val structure
 
 }
 
-open class CompetitorRobot(final override val id: Int, final override val structure: Structure) : Robot() {
+data class CompetitorRobot(final override val id: Int, final override val structure: Structure, override val owner: User) : Robot() {
 
     override val model = Model.CompetitorRobot
 
@@ -71,7 +72,7 @@ open class CompetitorRobot(final override val id: Int, final override val struct
 
 }
 
-open class PetRobot(final override val id: Int, final override val structure: Structure) : Robot() {
+data class PetRobot(final override val id: Int, final override val structure: Structure, override val owner: User) : Robot() {
 
     override val model = Model.PetRobot
 
@@ -85,7 +86,7 @@ open class PetRobot(final override val id: Int, final override val structure: St
     override fun toString() = "PetRobot(id=$id, model=$model)"
 }
 
-open class TerminatorRobot(final override val id: Int, final override val structure: Structure) : Robot() {
+data class TerminatorRobot(final override val id: Int, final override val structure: Structure, override val owner: User) : Robot() {
 
     override val model = Model.TerminatorRobot
 

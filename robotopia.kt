@@ -1,10 +1,15 @@
 package robotopia
 
 import robotopia.models.Robot
+import robotopia.models.User
+import kotlin.collections.HashMap
 import java.io.File
 
-object Robotopia {
-    val purchasedRobots: Map<String, List<Robot>> = HashMap()
+object Robotopia{
+
+    val users: MutableMap<Int, User> = HashMap()
+    val robots: MutableMap<Int, Robot> = HashMap()
+
 }
 
 object Console {
