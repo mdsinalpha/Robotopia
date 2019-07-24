@@ -1,11 +1,16 @@
 package robotopia
 import robotopia.models.Robot
+import robotopia.models.User
+import kotlin.collections.HashMap
 
 object Robotopia{
-    val purchased_robots: Map<String, List<Robot>> = HashMap()
+
+    val users: MutableMap<Int, User> = HashMap()
+    val robots: MutableMap<Int, Robot> = HashMap()
+
 }
 
-object IO{
+object Console{
 
     fun printDivider(char:Char='*', count:Int=25){
         println(char.toString().repeat(count))
