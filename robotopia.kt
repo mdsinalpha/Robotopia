@@ -2,12 +2,20 @@ package robotopia
 import robotopia.models.Robot
 import robotopia.models.User
 import kotlin.collections.HashMap
+import kotlin.system.exitProcess
 
 object Robotopia{
 
     val users: MutableMap<Int, User> = HashMap()
     val robots: MutableMap<Int, Robot> = HashMap()
 
+    fun help(){
+        Console.printBoxed("1-help", "2-exit")
+    }
+
+    fun exit(){
+        exitProcess(0)
+    }
 }
 
 object Console{
@@ -16,7 +24,7 @@ object Console{
         println(char.toString().repeat(count))
     }
 
-    fun printBoxed(messages:List<String>, char:Char='*') {
+    fun printBoxed(vararg messages:String, char:Char='*') {
         val count = messages.maxBy { it.length }!!.length + 25
         printDivider(char=char, count=count)
         messages.forEach { message ->
@@ -29,9 +37,5 @@ object Console{
             println(char)
         }
         printDivider(char=char, count=count)
-    }
-
-    fun printBoxed(message:String, char:Char='*'){
-        printBoxed(listOf(message), char=char)
     }
 }
