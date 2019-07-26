@@ -3,16 +3,16 @@ package robotopia.models
 import java.util.*
 import kotlin.collections.HashMap
 
-data class User(val name: String, val register_time: Date = Date()){
+data class User(val id: Int, val name: String, val register_time: Date = Date()){
 
-    private val purchasedRobots: MutableMap<Int, Robot> = HashMap()
+    val purchasedRobots: MutableMap<Int, Robot> = HashMap()
     var balance: Long = 10
         private set
 
     fun chargeBalance(amount: Long){
         if(amount < 0)
             throw Exception("Charging amount cannot be negative!")
-        balance -= amount
+        balance += amount
     }
 
     fun purchase(robot: Robot){
