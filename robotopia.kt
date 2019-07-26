@@ -18,9 +18,9 @@ object Robotopia{
     }
 }
 
-object Console{
+object Console {
 
-    fun printDivider(char:Char='*', count:Int=25){
+    fun printDivider(char: Char = '*', count: Int = 25) {
         println(char.toString().repeat(count))
     }
 
