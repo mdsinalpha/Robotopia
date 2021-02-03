@@ -1,2 +1,2 @@
 # Robotopia
-A sample Kotlin API to demonstrate object oriented principles.
+A sample API to demonstrate object oriented principles in kotlin.
